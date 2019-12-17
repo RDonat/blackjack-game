@@ -5,16 +5,16 @@
 */
 
 // Card Variables
-let suits = ['Spades', 'Diamonds', 'Hearts', 'Clubs'];
-let values = ['Ace', 'King', 'Queen', 'Jack',
+let suits = ['Spades', 'Diamonds', 'Hearts', 'Clubs'],
+    values = ['Ace', 'King', 'Queen', 'Jack',
               'Ten', 'Nine', 'Eight', 'Seven',
               'Six', 'Five', 'Four', 'Three', 'Two'];
 
 //DOM Variables
-let textArea = document.getElementById('text-area');
-let newGameButton = document.getElementById('new-game-button');
-let hitButton = document.getElementById('hit-button');
-let stayButton = document.getElementById('stay-button');
+let textArea = document.getElementById('text-area'),
+    newGameButton = document.getElementById('new-game-button'),
+    hitButton = document.getElementById('hit-button'),
+    stayButton = document.getElementById('stay-button');
 
 //Game Variables
 let gameStarted = false,
@@ -36,6 +36,7 @@ newGameButton.addEventListener('click', function() {
   playerWon = false;
 
   deck = createDeck();
+  //shuffleDeck(deck);
   dealerCards = [ getNextCard(), getNextCard() ];
   playerCards = [ getNextCard(), getNextCard() ];
 
@@ -58,38 +59,34 @@ function createDeck() {
   }
   return deck;
 }
-
+/*
+function shuffleDeck(deck) {
+  for (let i = 0; i < deck.length; i++) {
+    let swapIdx = Math.trunc(Math.random() * deck.length);
+    let tmp = deck[swapIdx];
+    deck[swapIdx] = deck[i];
+    deck[i] = tmp;
+  }
+}
+*/
 function getCardString(card) {
   return card.value + " of " + card.suit;
 }
-
-function showStatus() {
-  if (!gameStarted) {
-    textArea.innerText = "Care to play a game, buddy?";
-    return;
-  }
-}
-
+/*
 function getNextCard() {
   return deck.shift();
 }
+*/
+function showStatus() {
+  if (!gameStarted) {
+    textArea.innerText = 'Care to play a game, buddy?';
+    return;
+  }
+  for (var i = 0; i < deck.length; i++) {
+    textArea.innerText += '\n' + getCardString(deck[i]);
+  }
+}
 
 
-let deck = createDeck();
-
-
-let playerCards = [getNextCard(), getNextCard()];
-    
-console.log("Welcome to Blackjack!");
-    
-console.log("You are dealt: ");
-console.log(" " + getCardString(playerCards[0]) );
-console.log(" " + getCardString(playerCards[1]) );
-
-
-
-
-
-
-
-
+/*
+*/
