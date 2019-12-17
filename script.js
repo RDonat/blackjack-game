@@ -30,6 +30,7 @@ hitButton.style.display = 'none';
 stayButton.style.display = 'none';
 showStatus();
 
+//Button Events
 newGameButton.addEventListener('click', function() {
   gameStarted = true;
   gameOver = false;
@@ -58,6 +59,7 @@ stayButton.addEventListener('click', function() {
   showStatus();
 });
 
+//Functions
 function createDeck() {
   let deck = [];
   for (let suitIdx = 0; suitIdx < suits.length; suitIdx++) {
@@ -165,6 +167,7 @@ function checkForEndGame() {
   }
 }
 
+//Pasting on DOM
 function showStatus() {
   if (!gameStarted) {
     textArea.innerText = 'Care to play a game, buddy?';
