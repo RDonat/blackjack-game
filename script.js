@@ -35,6 +35,7 @@ newGameButton.addEventListener('click', function() {
   gameStarted = true;
   gameOver = false;
   playerWon = false;
+  gamePush = false;
 
   deck = createDeck();
   shuffleDeck(deck);
@@ -161,6 +162,9 @@ function checkForEndGame() {
     if (playerScore > dealerScore) {
       playerWon = true;
     }
+    else if (dealerScore == playerScore) {
+      gamePush = true;
+    }
     else {
       playerWon = false;
     }
@@ -197,6 +201,9 @@ function showStatus() {
   if (gameOver) {
     if (playerWon) {
       textArea.innerText += "You Won?! Damn, I'll get you next time!";
+    }
+    else if (gamePush) {
+      textArea.innerText += "The game ended with a push? Hehe, not bad.";
     }
     else {
       textArea.innerText += "Hehe, I won! Better luck next time *Smug Face*";
